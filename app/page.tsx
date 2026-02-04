@@ -1,65 +1,114 @@
-import Image from "next/image";
+import Link from 'next/link';
+import styles from './page.module.css';
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className={styles.container}>
+      <section className={styles.hero}>
+        <div className={styles.heroContent}>
+          <h1 className={styles.heroTitle}>
+            Save Lives Through
+            <span className={styles.gradient}> Medicine Donation</span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className={styles.heroDescription}>
+            Connect donors with hospitals in need. Our intelligent system ensures medicine reaches those who need it most, efficiently and safely.
           </p>
+          <div className={styles.heroButtons}>
+            <Link href="/donor" className="btn btn-primary">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+              </svg>
+              Donate Medicine
+            </Link>
+            <Link href="/hospital" className="btn btn-outline">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/>
+                <path d="M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/>
+              </svg>
+              Request Medicine
+            </Link>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <div className={styles.heroImage}>
+          <div className={styles.heroCard}>
+            <div className={styles.cardIcon}>
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                <path d="M12 8v8M8 12h8"/>
+              </svg>
+            </div>
+            <div className={styles.cardStats}>
+              <div className={styles.stat}>
+                <div className={styles.statValue}>1,250+</div>
+                <div className={styles.statLabel}>Donations</div>
+              </div>
+              <div className={styles.stat}>
+                <div className={styles.statValue}>850+</div>
+                <div className={styles.statLabel}>Fulfilled Requests</div>
+              </div>
+            </div>
+          </div>
         </div>
-      </main>
+      </section>
+
+      <section className={styles.features}>
+        <div className={styles.featuresGrid}>
+          <div className={styles.feature}>
+            <div className={styles.featureIcon}>
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+                <path d="M9 12l2 2 4-4"/>
+              </svg>
+            </div>
+            <h3>Verified Donations</h3>
+            <p>All donations are validated for safety, expiration dates, and storage conditions.</p>
+          </div>
+
+          <div className={styles.feature}>
+            <div className={styles.featureIcon}>
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 6v6l4 2"/>
+              </svg>
+            </div>
+            <h3>Fast Processing</h3>
+            <p>Intelligent priority system ensures emergency requests are handled first.</p>
+          </div>
+
+          <div className={styles.feature}>
+            <div className={styles.featureIcon}>
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <h3>Location-Based</h3>
+            <p>Matches donations with nearby hospitals to minimize delivery time.</p>
+          </div>
+
+          <div className={styles.feature}>
+            <div className={styles.featureIcon}>
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M3 3v18h18"/>
+                <path d="M18 17V9M13 17V5M8 17v-3"/>
+              </svg>
+            </div>
+            <h3>Real-time Tracking</h3>
+            <p>Monitor stock levels and request status with comprehensive dashboards.</p>
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.cta}>
+        <div className={styles.ctaCard}>
+          <h2>Ready to Make a Difference?</h2>
+          <p>Join our community of donors and healthcare providers working together to save lives.</p>
+          <Link href="/donor" className="btn btn-primary">
+            Get Started Today
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }
