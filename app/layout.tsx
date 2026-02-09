@@ -5,6 +5,9 @@ import '@/styles/globals.css';
 export const metadata: Metadata = {
   title: 'MediDonate - Medicine Donation Management System',
   description: 'Central platform for managing medicine donations and hospital requests',
+  icons:{
+    icon:'tab-logo.png'
+  }
 };
 
 export default function RootLayout({

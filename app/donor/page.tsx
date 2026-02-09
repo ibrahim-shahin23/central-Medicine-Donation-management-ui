@@ -46,9 +46,10 @@ export default function DonorPage() {
 
 function RegisterForm() {
   const [formData, setFormData] = useState({
-    national_id: '',
+    nationalId: '',
     name: '',
-    city: '',
+    cityId: '',
+    password: '',
     email: '',
   });
   const [loading, setLoading] = useState(false);
@@ -60,7 +61,7 @@ function RegisterForm() {
     setMessage(null);
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/donors/register`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/donors`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -70,7 +71,7 @@ function RegisterForm() {
 
       if (response.ok) {
         setMessage({ type: 'success', text: 'Registration successful! You can now submit donations.' });
-        setFormData({ national_id: '', name: '', city: '', email: '' });
+        setFormData({ nationalId: '', name: '', cityId: '', email: '', password:'' });
       } else {
         setMessage({ type: 'error', text: data.error || 'Registration failed' });
       }
@@ -94,8 +95,8 @@ function RegisterForm() {
         <input
           type="text"
           className="form-input"
-          value={formData.national_id}
-          onChange={(e) => setFormData({ ...formData, national_id: e.target.value })}
+          value={formData.nationalId}
+          onChange={(e) => setFormData({ ...formData, nationalId: e.target.value })}
           required
           placeholder="Enter your national ID"
         />
@@ -117,21 +118,16 @@ function RegisterForm() {
         <label className="form-label form-label-required">City</label>
         <select
           className="form-select"
-          value={formData.city}
-          onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+          value={formData.cityId}
+          onChange={(e) => setFormData({ ...formData, cityId: e.target.value })}
           required
         >
           <option value="">Select your city</option>
-          <option value="Cairo">Cairo</option>
-          <option value="Alexandria">Alexandria</option>
-          <option value="Giza">Giza</option>
-          <option value="Shubra El-Kheima">Shubra El-Kheima</option>
-          <option value="Port Said">Port Said</option>
-          <option value="Suez">Suez</option>
-          <option value="Luxor">Luxor</option>
-          <option value="Mansoura">Mansoura</option>
-          <option value="Tanta">Tanta</option>
-          <option value="Asyut">Asyut</option>
+          <option value="1">Cairo</option>
+          <option value="2">Alexandria</option>
+          <option value="3">Giza</option>
+          <option value="4">Luxor</option>
+          <option value="5">Aswan</option>
         </select>
       </div>
 
@@ -146,6 +142,18 @@ function RegisterForm() {
           placeholder="your.email@example.com"
         />
         <span className="form-hint">You will receive donation status updates via email</span>
+      </div>
+
+      <div className="form-group">
+        <label className="form-label form-label-required">Password</label>
+        <input
+          type="password"
+          className="form-input"
+          value={formData.password}
+          onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+          required
+          placeholder="2134sds@#$@#%@"
+        />
       </div>
 
       <button type="submit" className="btn btn-primary" disabled={loading}>

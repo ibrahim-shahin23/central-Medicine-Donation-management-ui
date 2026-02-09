@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api';
 
 const api = axios.create({
   baseURL: API_URL,
@@ -11,7 +11,7 @@ const api = axios.create({
 
 // Donor API
 export const donorAPI = {
-  register: (data: any) => api.post('/donors/register', data),
+  register: (data: any) => api.post('/donors', data),
   getAll: () => api.get('/donors'),
   getById: (id: string) => api.get(`/donors/${id}`),
 };
